@@ -19,4 +19,9 @@ int _strcmp(char *s1, char *s2);
 int word_len(char *str);
 int count_words(char *str);
 char **strtow(char *str);
+char *strtoken(char *line, char **args, char *delim, char *l_cp);
+char *cp_dup(char *line, char **args);
+char *tokpath(char *command, char *cp_path, int len_c);
+void bye(char **ar);
+void envir(char **ar, char **env);
 #endif
