@@ -3,10 +3,10 @@ A shell is a program that executes other programs in response to text commands.
 
 ## Description
 
-##Run
+## Run
 ./hsh
 
-##Test Command
+## Test Command
 1. For list directories or file:
 * ls -l
 * ls -a
