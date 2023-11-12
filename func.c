@@ -5,7 +5,7 @@
  *@argv: the file name
  *Return: void
  */
-void execute(char **argv, char **args)
+void execute(char **argv, char **args, char **env)
 {
 	char *ac_com = NULL, *command = NULL;
 	pid_t id;
@@ -22,14 +22,17 @@ void execute(char **argv, char **args)
 		else if (id == 0)
 		{
 			ac_com = _location(command);
-			execve(ac_com, args, NULL);
-			perror(argv[0]);
-			exit(EXIT_FAILURE);
+			if (execve(ac_com, args, env) == -1)
+			{
+				perror(argv[0]);
+				exit(126);
+			}
+			exit(EXIT_SUCCESS);
 		}
 		else
 		{
 			wait(NULL);
 		}
 	}
+	
 }
-

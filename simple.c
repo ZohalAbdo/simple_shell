@@ -27,17 +27,23 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 			free(line);
 			exit(EXIT_FAILURE);
 		}
+		if (charno <= 1)
+		{
+			continue;
+		}
 		l_cp = cp_dup(line, args);
-		args = malloc(sizeof(char *) * i);
+		i = count_words(line);
+		args = malloc(sizeof(char *) * (i + 1));
 		if (args == NULL)
 		{
-			_free(line, l_cp, NULL, 0);
+			if (line != NULL || l_cp != NULL)
+				_free(line, l_cp, NULL, 0);
 			exit(EXIT_FAILURE);
 		}
-		strtoken(line, args, delim, l_cp);
+		strtoken(line, args, delim, l_cp, &i);
 		bye(args);
 		envir(args, env);
-		execute(argv, args);
+		execute(argv, args, env);
 		_free(NULL, l_cp, args, 1);
 	}
 	free(line);

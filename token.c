@@ -7,7 +7,7 @@
  * @l_cp: copy of string;
  * Return: pointer to string.
  */
-char *strtoken(char *line, char **args, char *delim, char *l_cp)
+char *strtoken(char *line, char **args, char *delim, char *l_cp, int *count)
 {
 	int i = 0;
 	char *token;
@@ -31,6 +31,7 @@ char *strtoken(char *line, char **args, char *delim, char *l_cp)
 		}
 		token = strtok(NULL, delim);
 	}
+	*count = i;
 	args[i] = NULL;
 	return (*args);
 }

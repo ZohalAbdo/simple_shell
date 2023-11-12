@@ -8,7 +8,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-void execute(char **argv, char **args);
+void execute(char **argv, char **args, char **env);
 char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
@@ -19,7 +19,7 @@ int _strcmp(char *s1, char *s2);
 int word_len(char *str);
 int count_words(char *str);
 char **strtow(char *str);
-char *strtoken(char *line, char **args, char *delim, char *l_cp);
+char *strtoken(char *line, char **args, char *delim, char *l_cp, int *count);
 char *cp_dup(char *line, char **args);
 char *tokpath(char *command, char *cp_path, int len_c);
 void bye(char **ar);

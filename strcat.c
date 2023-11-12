@@ -8,22 +8,15 @@
  */
 char *_strcat(char *dest, char *src)
 {
-	int i;
-	int j;
+	int i, j;
+	int dest_len = _strlen(dest);
+	int src_len = _strlen(src);
 
-	i = 0;
-	for ( ; dest[i] != '\0'; )
-	{
-		i++;
-	}
-	j = 0;
-	for ( ; src[j] != '\0'; )
+	for (i = dest_len, j = 0; j < src_len; i++, j++)
 	{
 		dest[i] = src[j];
-		i++;
-		j++;
 	}
-	if ((long unsigned int)_strlen(dest) + _strlen(src) >= sizeof(dest))
+	if ((long unsigned int)dest_len + src_len >= sizeof(dest))
 	{
 		return (NULL);
 	}

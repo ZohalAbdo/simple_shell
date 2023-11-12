@@ -43,10 +43,8 @@ char *tokpath(char *command, char *cp_path, int len_c)
 	{
 		return (command);
 	}
-	return (NULL);
+	exit(EXIT_FAILURE);
 }
-
-
 /**
  * _location - location function
  * @command: command
@@ -71,5 +69,5 @@ char *_location(char *command)
 		if (ptok != NULL)
 			return (ptok);
 	}
-	return (NULL);
+	exit(EXIT_FAILURE);
 }
