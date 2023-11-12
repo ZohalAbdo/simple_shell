@@ -41,9 +41,9 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 			exit(EXIT_FAILURE);
 		}
 		strtoken(line, args, delim, l_cp, &i);
-		bye(args);
+		bye(args, line, l_cp);
 		envir(args, env);
-		execute(argv, args, env);
+		execute(argv, args, env, line, l_cp);
 		_free(NULL, l_cp, args, 1);
 	}
 	free(line);

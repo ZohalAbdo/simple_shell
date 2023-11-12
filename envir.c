@@ -16,4 +16,13 @@ void envir(char **ar, char **env)
 			write(STDOUT_FILENO, "\n", 1);
 		}
 	}
+	else
+	{
+		/**free(line);
+		free(l_cp);
+		for (i = 0; ar[i] != NULL; i++)
+			free(ar[i]);
+		free(ar);
+		exit(EXIT_FAILURE);*/
+	}
 }

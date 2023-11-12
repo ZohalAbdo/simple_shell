@@ -1,22 +1,23 @@
 #include "unish.h"
 /**
-  * tokpath - break the path.
-  * @command: first command.
-  * @cp_path: copy of path.
-  * @len_c: path length.
-  * Return: pointer.
-  */
-char *tokpath(char *command, char *cp_path, int len_c)
+ * tokpath - break the path.
+ * @command: first command.
+ * @cp_path: copy of path.
+ * @len_c: path length.
+ * Return: pointer.
+ */
+char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args)
 {
-	char *tok_path, *file_path;
-	int len_dir;
+	char *tok_path, *file_path, *command = NULL;
+	int len_dir, i;
 	struct stat buffer;
 
+	command = args[0];
 	tok_path = strtok(cp_path, ":");
 	while (tok_path != NULL)
 	{
 		len_dir = _strlen(tok_path);
-		file_path = malloc(len_c + len_dir + 2);
+		file_path = malloc(l_c + len_dir + 2);
 		if (file_path == NULL)
 		{
 			perror("tsh: memory allocation error");
@@ -38,11 +39,16 @@ char *tokpath(char *command, char *cp_path, int len_c)
 			tok_path = strtok(NULL, ":");
 		}
 	}
-	free(cp_path);
 	if (stat(command, &buffer) == 0)
-	{
-		return (command);
-	}
+        {
+                return (command);
+        }
+	free(cp_path);
+	free(line);
+	free(l_cp);
+	for (i = 0; args[i] != 0; i++)
+		free(args[i]);
+	free(args);
 	exit(EXIT_FAILURE);
 }
 /**
@@ -50,11 +56,12 @@ char *tokpath(char *command, char *cp_path, int len_c)
  * @command: command
  * Return: file path
  */
-char *_location(char *command)
+char *_location(char *line, char *l_cp, char **args)
 {
-	char *path, *cp_path, *ptok;
+	char *path, *cp_path, *ptok, *command = NULL;
 	int len_c;
 
+	command = args[0];
 	path = getenv("PATH");
 	if (path)
 	{
@@ -65,7 +72,7 @@ char *_location(char *command)
 			exit(EXIT_FAILURE);
 		}
 		len_c = _strlen(command);
-		ptok = tokpath(command, cp_path, len_c);
+		ptok = tokpath(cp_path, len_c, line, l_cp, args);
 		if (ptok != NULL)
 			return (ptok);
 	}
