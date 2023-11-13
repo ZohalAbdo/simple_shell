@@ -27,7 +27,7 @@ char *strtoken(char *line, char **args, char *delim, char *l_cp, int *count)
 		{
 			free(args[i]);
 			_free(line, l_cp, args, 0);
-			exit(EXIT_FAILURE);
+			exit(0);
 		}
 		token = strtok(NULL, delim);
 	}

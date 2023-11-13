@@ -13,10 +13,8 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 	ssize_t charno = 0;
 	int i;
 
-	errno = ENOENT;
 	while (1)
 	{
-		i = 0;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		charno  = getline(&line, &len, stdin);
@@ -25,11 +23,11 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
 			free(line);
-			exit(EXIT_FAILURE);
+			exit(0);
 		}
 		if (charno <= 1)
 		{
-			continue;
+			continue; /*keep prompt display when press enter*/
 		}
 		l_cp = cp_dup(line, args);
 		i = count_words(line);
@@ -38,7 +36,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 		{
 			if (line != NULL || l_cp != NULL)
 				_free(line, l_cp, NULL, 0);
-			exit(EXIT_FAILURE);
+			exit(0);
 		}
 		strtoken(line, args, delim, l_cp, &i);
 		bye(args, line, l_cp);

@@ -22,7 +22,8 @@ char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args)
 		{
 			perror("tsh: memory allocation error");
 			free(cp_path);
-			exit(EXIT_FAILURE);
+			free(file_path); /*free file path*/
+			exit(EXIT_SUCCESS); /*exit with 0*/
 		}
 		_strcpy(file_path, tok_path);
 		_strcat(file_path, "/");
@@ -43,13 +44,14 @@ char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args)
         {
                 return (command);
         }
+	perror("bash");
 	free(cp_path);
 	free(line);
 	free(l_cp);
 	for (i = 0; args[i] != 0; i++)
 		free(args[i]);
 	free(args);
-	exit(EXIT_FAILURE);
+	exit(0);
 }
 /**
  * _location - location function
@@ -69,12 +71,12 @@ char *_location(char *line, char *l_cp, char **args)
 		if (cp_path == NULL)
 		{
 			perror("tsh: memory allocation error");
-			exit(EXIT_FAILURE);
+			exit(0);
 		}
 		len_c = _strlen(command);
 		ptok = tokpath(cp_path, len_c, line, l_cp, args);
 		if (ptok != NULL)
 			return (ptok);
 	}
-	exit(EXIT_FAILURE);
+	exit(0);
 }

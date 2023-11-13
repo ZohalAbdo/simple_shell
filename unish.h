@@ -8,6 +8,8 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+extern char **environ;
+
 char *_location(char *line, char *l_cp, char **args);
 void execute(char **argv, char **args, char **env, char *line, char *l_cp);
 char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args);

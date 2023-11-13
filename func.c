@@ -22,11 +22,22 @@ void execute(char **argv, char **args, char **env, char *line, char *l_cp)
 			for (i = 0; args[i] != NULL; i++)
 				free(args[i]);
 			free(args);
-			exit(EXIT_FAILURE);
+			exit(0);
 		}
 		else if (id == 0)
 		{
 			ac_com = _location(line, l_cp, args);
+			if (ac_com == NULL) /* handle error */
+			{
+				perror(argv[0]);
+				free(line);
+				free(l_cp);
+				for (i = 0; args[i] != NULL; i++)
+					free(args[i]);
+				free(args);
+				exit(0);
+			}
+			/*  */
 			if (execve(ac_com, args, env) == -1)
 			{
 				perror(argv[0]);
@@ -35,14 +46,14 @@ void execute(char **argv, char **args, char **env, char *line, char *l_cp)
 				for (i = 0; args[i] != NULL; i++)
 					free(args[i]);
 				free(args);
-				exit(126);
+				exit(0);
 			}
 			free(line);
 			free(l_cp);
 			for (i = 0; args[i] != NULL; i++)
 				free(args[i]);
 			free(args);
-			exit(EXIT_SUCCESS);
+			exit(0);
 		}
 		else
 		{

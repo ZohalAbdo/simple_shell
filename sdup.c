@@ -14,7 +14,7 @@ char *cp_dup(char *line, char **args)
 	{
 		perror("tsh: memory allocation error");
 		_free(line, cp, args, 0);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	return (cp);
 }
