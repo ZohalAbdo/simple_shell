@@ -10,9 +10,9 @@
 #include <sys/stat.h>
 extern char **environ;
 
-char *_location(char *line, char *l_cp, char **args);
+char *_location(char *line, char *l_cp, char **args, char **argv);
 void execute(char **argv, char **args, char **env, char *line, char *l_cp);
-char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args);
+char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args, char **argv);
 char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
@@ -22,7 +22,7 @@ int _strcmp(char *s1, char *s2);
 int word_len(char *str);
 int count_words(char *str);
 char **strtow(char *str);
-char *strtoken(char *line, char **args, char *delim, char *l_cp, int *count);
+char **strtoken(char *line, char **args, char *delim, char *l_cp);
 char *cp_dup(char *line, char **args);
 void bye(char **ar, char *line, char *l_cp);
 void envir(char **ar, char **env);

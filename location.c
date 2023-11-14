@@ -6,7 +6,7 @@
  * @len_c: path length.
  * Return: pointer.
  */
-char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args)
+char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args, char **argv)
 {
 	char *tok_path, *file_path, *command = NULL;
 	int len_dir, i;
@@ -44,21 +44,21 @@ char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args)
         {
                 return (command);
         }
-	perror("bash");
+	fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
 	free(cp_path);
 	free(line);
 	free(l_cp);
 	for (i = 0; args[i] != 0; i++)
 		free(args[i]);
 	free(args);
-	exit(0);
+	exit(127);
 }
 /**
  * _location - location function
  * @command: command
  * Return: file path
  */
-char *_location(char *line, char *l_cp, char **args)
+char *_location(char *line, char *l_cp, char **args, char **argv)
 {
 	char *path, *cp_path, *ptok, *command = NULL;
 	int len_c;
@@ -74,9 +74,10 @@ char *_location(char *line, char *l_cp, char **args)
 			exit(0);
 		}
 		len_c = _strlen(command);
-		ptok = tokpath(cp_path, len_c, line, l_cp, args);
+		ptok = tokpath(cp_path, len_c, line, l_cp, args, argv);
 		if (ptok != NULL)
 			return (ptok);
+		exit (127);
 	}
 	exit(0);
 }
