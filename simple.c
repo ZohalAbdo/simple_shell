@@ -32,8 +32,8 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 		l_cp = cp_dup(line);
 		args = strtoken(line, args, delim, l_cp);
 		bye(args, line, l_cp);
-		envir(args, env);
-		execute(argv, args, line, l_cp);
+		/*envir(args, env);*/
+		execute(argv, args, line, l_cp, env);
 		_free(NULL, l_cp, args, 1);
 	}
 	free(line);
