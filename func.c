@@ -5,7 +5,7 @@
  *@argv: the file name
  *Return: void
  */
-void execute(char **argv, char **args, char *line, char *l_cp, char **env)
+void execute(char **argv, char **args, char *line, char *l_cp)
 {
 	char *ac_com = NULL;
 	pid_t id;
@@ -39,7 +39,7 @@ void execute(char **argv, char **args, char *line, char *l_cp, char **env)
 				exit(126);
 			}
 			/*  */
-			if (execve(ac_com, args, env) == -1)
+			if (execve(ac_com, args, environ) == -1)
 			{
 				perror(argv[0]);
 				free(line);

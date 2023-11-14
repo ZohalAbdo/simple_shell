@@ -6,7 +6,7 @@
  *@env: environment
  *Return:Always 0
  */
-int main(__attribute__((unused))int argc, char **argv, char **env)
+int main(__attribute__((unused))int argc, char **argv)
 {
 	char *delim = " \n\t", *line = NULL, *l_cp = NULL;
 	size_t len = 0;
@@ -33,7 +33,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 		args = strtoken(line, args, delim, l_cp);
 		bye(args, line, l_cp);
 		/*envir(args, env);*/
-		execute(argv, args, line, l_cp, env);
+		execute(argv, args, line, l_cp);
 		_free(NULL, l_cp, args, 1);
 	}
 	free(line);

@@ -11,7 +11,7 @@
 extern char **environ;
 
 char *_location(char *line, char *l_cp, char **args, char **argv);
-void execute(char **argv, char **args, char *line, char *l_cp, char **env);
+void execute(char **argv, char **args, char *line, char *l_cp);
 char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args, char **argv);
 char *_strdup(char *str);
 char *_strcpy(char *dest, char *src);
