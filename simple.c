@@ -29,7 +29,7 @@ int main(__attribute__((unused))int argc, char **argv, char **env)
 		{
 			continue; /*keep prompt display when press enter*/
 		}
-		l_cp = cp_dup(line, args);
+		l_cp = cp_dup(line);
 		args = strtoken(line, args, delim, l_cp);
 		bye(args, line, l_cp);
 		envir(args, env);

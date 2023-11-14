@@ -16,6 +16,6 @@ void bye(char **ar, char *line, char *l_cp)
 		free(ar);
 		free(line);
 		free(l_cp);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 }

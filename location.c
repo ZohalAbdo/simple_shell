@@ -22,8 +22,7 @@ char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args, char 
 		{
 			perror("tsh: memory allocation error");
 			free(cp_path);
-			free(file_path); /*free file path*/
-			exit(EXIT_SUCCESS); /*exit with 0*/
+			exit(EXIT_FAILURE);
 		}
 		_strcpy(file_path, tok_path);
 		_strcat(file_path, "/");
@@ -71,7 +70,7 @@ char *_location(char *line, char *l_cp, char **args, char **argv)
 		if (cp_path == NULL)
 		{
 			perror("tsh: memory allocation error");
-			exit(0);
+			exit(EXIT_FAILURE);
 		}
 		len_c = _strlen(command);
 		ptok = tokpath(cp_path, len_c, line, l_cp, args, argv);

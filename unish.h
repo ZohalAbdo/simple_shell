@@ -23,7 +23,7 @@ int word_len(char *str);
 int count_words(char *str);
 char **strtow(char *str);
 char **strtoken(char *line, char **args, char *delim, char *l_cp);
-char *cp_dup(char *line, char **args);
+char *cp_dup(char *line);
 void bye(char **ar, char *line, char *l_cp);
 void envir(char **ar, char **env);
 #endif
