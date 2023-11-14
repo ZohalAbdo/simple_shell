@@ -12,6 +12,7 @@ char *cp_dup(char *line)
 	cp = strdup(line);
 	if (cp == NULL)
 	{
+		free(line);
 		perror("malloc");
 		exit(EXIT_FAILURE);
 	}

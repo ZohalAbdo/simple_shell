@@ -5,16 +5,17 @@
  *@argv: the file name
  *Return: void
  */
-void execute(char **argv, char **args, char **env, char *line, char *l_cp)
+void execute(char **argv, char **args, char *line, char *l_cp)
 {
 	char *ac_com = NULL;
 	pid_t id;
+/*	pid_t child_id;*/
 	int i;
 
 	if (args)
 	{
 		id = fork();
-		if (id == -1)
+		if (id < 0)
 		{
 			perror(argv[0]);
 			free(line);
@@ -38,7 +39,7 @@ void execute(char **argv, char **args, char **env, char *line, char *l_cp)
 				exit(126);
 			}
 			/*  */
-			if (execve(ac_com, args, env) == -1)
+			if (execve(ac_com, args, NULL) == -1)
 			{
 				perror(argv[0]);
 				free(line);
