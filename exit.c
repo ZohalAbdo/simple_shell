@@ -2,6 +2,8 @@
 /**
   * bye - exit from shell
   * @ar: command line
+  * @line: input from user
+  * @l_cp: strdup return
   */
 void bye(char **ar, char *line, char *l_cp)
 {
