@@ -2,7 +2,6 @@
 /**
   * envir - print enviroment.
   * @ar: command.
-  * @env: enviroment.
   */
 void envir(char **ar)
 {
