@@ -11,7 +11,6 @@ void execute(char **argv, char **args, char *line, char *l_cp)
 {
 	char *ac_com = NULL;
 	pid_t id;
-	int i;
 
 	if (args)
 	{

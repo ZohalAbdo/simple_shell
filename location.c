@@ -13,7 +13,7 @@ char *tokpath(char *cp_path, int l_c, char *line, char *l_cp,
 char **args, char **argv)
 {
 	char *tok_path, *file_path, *command = NULL;
-	int len_dir, i;
+	int len_dir;
 	struct stat buffer;
 
 	command = args[0];

@@ -16,7 +16,7 @@ char *_strcat(char *dest, char *src)
 	{
 		dest[i] = src[j];
 	}
-	if ((long unsigned int)dest_len + src_len >= sizeof(dest))
+	if ((unsigned long)dest_len + src_len >= sizeof(dest))
 	{
 		return (NULL);
 	}
