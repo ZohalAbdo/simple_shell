@@ -1,12 +1,16 @@
 #include "unish.h"
 /**
  * tokpath - break the path.
- * @command: first command.
+ * @l_cp: line copy
+ * @line: line
+ * @args: arguments
+ * @argv: values of arg
  * @cp_path: copy of path.
- * @len_c: path length.
+ * @l_c: path length.
  * Return: pointer.
  */
-char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args, char **argv)
+char *tokpath(char *cp_path, int l_c, char *line, char *l_cp,
+char **args, char **argv)
 {
 	char *tok_path, *file_path, *command = NULL;
 	int len_dir, i;
@@ -40,21 +44,20 @@ char *tokpath(char *cp_path, int l_c, char *line, char *l_cp, char **args, char 
 		}
 	}
 	if (stat(command, &buffer) == 0)
-        {
-                return (command);
-        }
+	{
+		return (command);
+	}
 	fprintf(stderr, "%s: 1: %s: not found\n", argv[0], args[0]);
 	free(cp_path);
-	free(line);
-	free(l_cp);
-	for (i = 0; args[i] != 0; i++)
-		free(args[i]);
-	free(args);
+	_free(line, l_cp, args, 1);
 	exit(127);
 }
 /**
  * _location - location function
- * @command: command
+ * @line: line
+ * @l_cp: line copy
+ * @args: arguments
+ * @argv: values of the arguments
  * Return: file path
  */
 char *_location(char *line, char *l_cp, char **args, char **argv)
@@ -76,7 +79,7 @@ char *_location(char *line, char *l_cp, char **args, char **argv)
 		ptok = tokpath(cp_path, len_c, line, l_cp, args, argv);
 		if (ptok != NULL)
 			return (ptok);
-		exit (127);
+		exit(127);
 	}
 	exit(0);
 }
