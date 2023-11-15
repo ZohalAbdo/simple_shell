@@ -2,7 +2,6 @@
 /**
   * cp_dup - reallocate and duplicate string.
   * @line: string.
-  * @args: NULL string
   * Return: pointer.
   */
 char *cp_dup(char *line)
