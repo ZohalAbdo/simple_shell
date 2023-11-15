@@ -3,7 +3,6 @@
  *main - PID
  *@argc: numbers of argument
  *@argv: array
- *@env: environment
  *Return:Always 0
  */
 int main(__attribute__((unused))int argc, char **argv)
