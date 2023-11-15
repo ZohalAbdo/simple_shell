@@ -32,7 +32,7 @@ int main(__attribute__((unused))int argc, char **argv)
 		l_cp = cp_dup(line);
 		args = strtoken(line, args, delim, l_cp);
 		bye(args, line, l_cp);
-		/*envir(args, env);*/
+		envir(args);
 		execute(argv, args, line, l_cp);
 		_free(NULL, l_cp, args, 1);
 	}

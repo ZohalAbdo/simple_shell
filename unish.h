@@ -25,5 +25,5 @@ char **strtow(char *str);
 char **strtoken(char *line, char **args, char *delim, char *l_cp);
 char *cp_dup(char *line);
 void bye(char **ar, char *line, char *l_cp);
-void envir(char **ar, char **env);
+void envir(char **ar);
 #endif

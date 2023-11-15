@@ -39,7 +39,7 @@ void execute(char **argv, char **args, char *line, char *l_cp)
 				exit(126);
 			}
 			/*  */
-			if (execve(ac_com, args, environ) == -1)
+			if (execve(ac_com, args, NULL) == -1)
 			{
 				perror(argv[0]);
 				free(line);
