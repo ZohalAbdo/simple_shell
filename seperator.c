@@ -3,7 +3,7 @@
   * separator - separate command and executed in new line.
   * @ar: command line.
   */
-void separator(char **ar)
+void separator(char *ar)
 {
 	char *s, *new;
 	int i = 0;
