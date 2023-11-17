@@ -34,7 +34,7 @@ char *tokpath(char *cp_path, int l_c, char *line, char *l_cp,
 		_strcat(file_path, "\0");
 		if (stat(file_path, &buffer) == 0)
 		{
-			if  (access(file_path, F_OK | X_OK) == 0)
+			if  (access(file_path, X_OK) == 0)
 			{
 				free(cp_path);
 				return (file_path);
