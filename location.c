@@ -10,7 +10,7 @@
  * Return: pointer.
  */
 char *tokpath(char *cp_path, int l_c, char *line, char *l_cp,
-char **args, char **argv)
+		char **args, char **argv)
 {
 	char *tok_path, *file_path, *command = NULL;
 	int len_dir;
@@ -34,8 +34,11 @@ char **args, char **argv)
 		_strcat(file_path, "\0");
 		if (stat(file_path, &buffer) == 0)
 		{
-			free(cp_path);
-			return (file_path);
+			if  (access(file_path, F_OK | X_OK) == 0)
+			{
+				free(cp_path);
+				return (file_path);
+			}
 		}
 		else
 		{
